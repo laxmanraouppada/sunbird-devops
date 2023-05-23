@@ -1,4 +1,4 @@
-import urllib.error, argparse, json
+import urllib2, argparse, json
 import jwt
 
 from common import json_request, get_api_plugins, retrying_urlopen
@@ -8,7 +8,7 @@ def _consumer_exists(kong_admin_api_url, username):
     try:
         retrying_urlopen(consumers_url + "/" + username)
         return True
-    except urllib.error.HTTPError as e:
+    except urllib2.HTTPError as e:
         if(e.code == 404):
             return False
         else:
@@ -20,7 +20,7 @@ def _get_consumer(kong_admin_api_url, username):
         response = retrying_urlopen(consumers_url + "/" + username)
         consumer = json.loads(response.read())
         return consumer
-    except urllib.error.HTTPError as e:
+    except urllib2.HTTPError as e:
         if(e.code == 404):
             return None
         else:
