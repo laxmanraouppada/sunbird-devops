@@ -9,7 +9,7 @@
   shell: "pip install --upgrade setuptools"
   shell: "pip -V"
   shell: "pip install PyJWT"
-  
+  shell: "pip install retry"
 
 #- name: Ensure pip is installed
   #apt: name=python3-pip 
@@ -18,8 +18,8 @@
 #- name: Ensure PyJWT is installed
   #pip: name=PyJWT
 
-- name: Ensure retry is installed
-  pip: name=retry
+#- name: Ensure retry is installed
+  #pip: name=retry
 
 - name: Save kong_consumers to json file
   copy: dest=/tmp/kong_consumers.json content="{{ kong_consumers | to_nice_json}}" mode=0644
