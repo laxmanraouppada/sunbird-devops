@@ -8,6 +8,9 @@
 
 - name: Ensure retry is installed
   pip: name=retry
+  
+- name: Ensure jwt is installed
+  pip: name=jwt  
 
 - name: Save kong_consumers to json file
   copy: dest=/tmp/kong_consumers.json content="{{ kong_consumers | to_nice_json}}" mode=0644
