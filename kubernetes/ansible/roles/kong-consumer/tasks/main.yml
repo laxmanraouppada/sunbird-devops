@@ -3,11 +3,15 @@
   #apt: name=python-pip 
   #when: ansible_os_family == 'Debian' and ansible_distribution_version | float < 18
   
-- name: Ensure epel-release is installed
-  shell: yum install epel-release -y 
-
-- name: Ensure update is installed
-  shell: yum install update -y 
+- name: install epel release repo.  
+  yum:  
+    name: "epel-release"  
+    state: present
+    
+- name: Upgrade all yum packages ansible.  
+  yum:  
+    name: "*"  
+    state: latest   
 
 - name: Ensure pip is installed
   apt: name=python3-pip 
