@@ -32,7 +32,7 @@
   when: kong_admin_api_url is not defined
 
 - name: Run script to save consumers
-  shell: "python2 /tmp/kong-api-scripts/kong_consumers.py /tmp/kong_consumers.json --kong-admin-api-url={{ kong_admin_api_url }}"
+  shell: "python /tmp/kong-api-scripts/kong_consumers.py /tmp/kong_consumers.json --kong-admin-api-url={{ kong_admin_api_url }}"
   register: jwt_token
 
 - name: Touch the token file
