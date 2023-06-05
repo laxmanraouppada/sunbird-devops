@@ -1,7 +1,7 @@
 ---
 - name: Ensure pip is installed
-  #become: yes
-  #become_user: root
+  become: yes
+  become_user: root
   apt: name=python-pip 
   #when: ansible_os_family == 'Debian' and ansible_distribution_version | float < 18
   
